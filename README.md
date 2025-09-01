@@ -88,3 +88,5 @@ begin <- as.numeric(as.POSIXct("2024-04-01 00:00:00", tz = "UTC"))
   - `/v3/sets` <U+2192> `get_sets()`
 - JSON is parsed as UTF-8.
 - Returned objects are data frames (tibbles), ready for analysis with dplyr.
+
+
