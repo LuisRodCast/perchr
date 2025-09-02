@@ -1,5 +1,8 @@
 # perchr
 
+[![R-CMD-check](https://github.com/LuisRodCast/perchr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/LuisRodCast/perchr/actions/workflows/R-CMD-check.yaml)
+
+
 The **perchr** package provides a simple R interface to the Perch API, enabling users to
 authenticate, retrieve, and organize Perch data (e.g., sets, users, exercises)
 directly into R for analysis.
