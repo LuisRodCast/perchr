@@ -16,6 +16,5 @@ LazyData: true
 Imports:
     httr,
     jsonlite,
-    dplyr,
-    rlang
+    dplyr
 RoxygenNote: 7.3.2

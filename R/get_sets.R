@@ -32,7 +32,7 @@ get_sets <- function(org_id,
       body$next_token <- next_token
     }
 
-    if (verbose) message(sprintf("🔁 Requesting page %d...", page))
+    if (verbose) message(sprintf("Requesting page %d...", page))
 
     res <- httr::POST(
       url = "https://api.perch.fit/v3/sets",
@@ -56,7 +56,7 @@ get_sets <- function(org_id,
 
     # Exit if no data
     if (is.null(parsed$data) || length(parsed$data) == 0) {
-      if (verbose) message("✅ No sets returned.")
+      if (verbose) message("No sets returned.")
       break
     }
 
@@ -71,7 +71,7 @@ get_sets <- function(org_id,
     all_sets <- append(all_sets, list(sets_batch))
 
     if (is.null(parsed$next_token)) {
-      if (verbose) message("✅ All pages retrieved.")
+      if (verbose) message("All pages retrieved.")
       break
     } else {
       next_token <- parsed$next_token
