@@ -2,35 +2,31 @@
 % Please edit documentation in R/get_sets.R
 \name{get_sets}
 \alias{get_sets}
-\title{Get sets (paged)}
+\title{Get sets (paginated)}
 \usage{
 get_sets(
   org_id,
   begin_time = NULL,
   end_time = NULL,
   include_reps = FALSE,
-  untracked = "INCLUDE"
+  untracked = "INCLUDE",
+  verbose = TRUE
 )
 }
 \arguments{
-\item{org_id}{Numeric organization id.}
+\item{org_id}{Numeric organization ID.}
 
-\item{begin_time, end_time}{Optional numeric epoch seconds.}
+\item{begin_time, end_time}{Optional epoch seconds.}
 
-\item{include_reps}{Logical; include rep arrays.}
+\item{include_reps}{Logical; if TRUE, include rep data in output.}
 
 \item{untracked}{One of "INCLUDE" or "EXCLUDE".}
+
+\item{verbose}{Logical; if TRUE, prints progress.}
 }
 \value{
-A data frame of sets (joined with user/exercise names when available).
+If include_reps = TRUE, a list with $sets and $reps data.frames; else just the sets.
 }
 \description{
-Get sets (paged)
-}
-\examples{
-\dontrun{
-  perch_auth(Sys.getenv("PERCH_TOKEN"))
-  oid <- get_organization_id()
-  sets <- get_sets(oid)
-}
+Get sets (paginated)
 }

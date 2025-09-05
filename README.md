@@ -64,32 +64,21 @@ head(exercises)
 head(sets)
 ```
 
-## Optional configuration (advanced)
-
-These are usually **not** required; perchr defaults to the production API.
-
+## Another Option
 ```r
-# From Perch docs / Swagger
-base_url    <- "https://api.perch.fit"
+#Once library is loaded, you can try this code to authenticate, get perch_users, perch_exercises, 
+#and perch_sets (gives a list of sets & reps; this is a long pull if you have a lot of data)
 
-# Most installations use Bearer; change to "JWT" only if your server explicitly requires it
-auth_scheme <- "Bearer"
+perch_auth(token = "YOUR_PERCH_TOKEN_HERE")
 
-# Your current token in this R session (set by perch_auth())
-token <- getOption("perchr.token")
-
-# Example: a default begin date if you build your own incremental logic
 begin <- as.numeric(as.POSIXct("2024-04-01 00:00:00", tz = "UTC"))
+
+org_id <- get_organization_id()
+perch_users <- get_all_users(org_id = org_id)
+perch_exercises <- get_all_exercises(org_id = org_id)
+perch_sets <- get_sets(
+  org_id = org_id,
+  begin_time = begin_time,
+  include_reps = TRUE
+)
 ```
-
-## Notes
-
-- Endpoints used by the high-level helpers:
-  - `/v2/user` <U+2192> `get_organization_id()`
-  - `/v2/users` <U+2192> `get_all_users()`
-  - `/v3/exercises` <U+2192> `get_all_exercises()`
-  - `/v3/sets` <U+2192> `get_sets()`
-- JSON is parsed as UTF-8.
-- Returned objects are data frames (tibbles), ready for analysis with dplyr.
-
-
